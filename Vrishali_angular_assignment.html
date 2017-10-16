@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Angular JS</title>
+		<style>
+			#sub{
+				width: 200px;
+				background-color: silver;
+				margin: 10px;
+				float: left;
+			}
+			#tit{
+				text-align: center;
+			}
+			#pht ,.b{
+				width: 100%;
+			}
+			#phn{
+				text-align: center;
+			}
+		</style>
+		<script src="lib/angular.js"></script>
+		<script>
+		function myassign ($scope) {
+			$scope.hs = [{nameh:"Supregirl", ph:"images/supergirl.jpg", P:9960},
+						{nameh:"Rajani", ph:"images/rajani.jpg", P:2868},
+						{nameh:"Phantom", ph:"images/phantom.jpg", P:9765},
+						{nameh:"Ironman", ph:"images/ironman.jpg", P:9922}];
+		 $scope.dltMe=function(i){
+			$scope.hs.splice(i,1);
+		};
+		$scope.updt=function(j){
+			
+		};
+		$scope.addMe=function(){
+			console.log("vrish");
+				$scope.hs.push(
+					{
+					nameh:$scope.m1,
+					ph:$scope.m2,
+					P:$scope.m3
+					}
+				);
+		};
+		}
+		
+		
+		</script>
+	</head>
+	<body ng-app>
+		<div id="main" ng-controller="myassign" >
+		<div id="sub" ng-repeat="hero in hs">
+			<h1 id="tit">{{hero.nameh}}</h1>
+			<img id="pht" src={{hero.ph}}/>
+			<h3 id="phn">{{hero.P}}</h3>
+			<button class="b" ng-click="dltMe($index)">Delete Hero</button>
+			<button class="b" ng-click="updt($index)">Update Hero</button>
+		</div>
+		
+		<br />
+		
+		</div>
+ 		<div>
+		<label>Hero Name</label><br />
+		<input type="text" id="i1" ng-model="m1"/><br />
+		<label>Hero Photo</label><br />
+		<input type="text" id="i2" ng-model="m2"/><br />
+		<label>Hero Phone</label><br />
+		<input type="text" id="i3" ng-model="m3"/><br />
+		<hr />
+		<button ng-click="addMe()">Add Hero</button>
+		</div>
+		<br />
+		<hr />
+	</body>
+</html>
